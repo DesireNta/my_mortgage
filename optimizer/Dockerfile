@@ -7,5 +7,6 @@ RUN dotnet publish -o output
 FROM microsoft/aspnetcore:2.0
 COPY --from=builder /app/output /app
 WORKDIR /app
+EXPOSE 80/tcp
 ENTRYPOINT ["dotnet"]
 CMD ["optimizer.dll"]

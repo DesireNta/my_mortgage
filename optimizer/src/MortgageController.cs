@@ -34,7 +34,7 @@ namespace Optimizer
 
             Console.WriteLine("{0} jobs created", JobsController.Jobs.Count);
             DateTime debut = DateTime.Now;
-            while (DateTime.Now < debut.AddMinutes(1))
+            while (DateTime.Now < debut.AddMinutes(3))
             {
                 lock (JobsController.Verrou)
                 {
