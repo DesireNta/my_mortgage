@@ -1,0 +1,30 @@
+---
+version: '2'
+services :
+    mongo:
+        image: "mongo:3.2"
+    optimizer:
+        build: ./optimizer
+        image: ntambiye/optimizer
+    calc:
+        build: ./calculator
+        image: ntambiye/calculator
+        environment:
+            - "URLOptimizerJobs=http://optimizer/api/Jobs/"
+    reporting:
+        build: ./reporting
+        image: ntambiye/reporting
+
+    notifier: 
+        build: ./notifier
+        image: ntambiye/notifier
+        environment:
+            - SMTP_AUTH_LOGIN=${GMAIL_LOGIN}
+            - SMTP_AUTH_PASSWORD=${GMAIL_PASS}
+    app:
+        build: ./portal
+        image: ntambiye/portal
+        ports: 
+            - "8080:8080"
+
+          
